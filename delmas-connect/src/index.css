@@ -1,0 +1,360 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Prevent horizontal scroll on mobile */
+html, body {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Animation keyframes */
+@keyframes bounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-bottom {
+  from {
+    transform: translateY(1rem);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-in {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.fade-in {
+  animation-name: fade-in;
+}
+
+.slide-in-from-bottom-4 {
+  animation-name: slide-in-from-bottom;
+}
+
+/* ============================================
+   RESPONSIVE FONT SIZES - ALL SCREEN SIZES
+   ============================================ */
+
+/* Extra small devices (iPhone SE, 320px) */
+@media (max-width: 374px) {
+  html {
+    font-size: 13px;
+  }
+}
+
+/* Small devices (iPhone 12/13/14, 375px) */
+@media (min-width: 375px) and (max-width: 413px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+/* Medium phones (iPhone Plus, 414px) */
+@media (min-width: 414px) and (max-width: 479px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+/* Large phones (480px+) */
+@media (min-width: 480px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* ============================================
+   TOUCH-FRIENDLY INTERACTIONS - MOBILE FIRST
+   ============================================ */
+
+/* All buttons should have minimum touch target */
+button, 
+[role="button"] {
+  min-height: 48px;
+  min-width: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Form elements need 16px font to prevent iOS zoom */
+input, 
+select, 
+textarea {
+  font-size: 16px !important;
+}
+
+/* Links should have adequate touch targets */
+a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Extra small screens need larger touch targets */
+@media (max-width: 413px) {
+  button, [role="button"] {
+    min-height: 52px;
+    min-width: 52px;
+  }
+}
+
+/* ============================================
+   FOCUS STATES FOR ACCESSIBILITY
+   ============================================ */
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible {
+  outline: 2px solid #f97316;
+  outline-offset: 2px;
+}
+
+/* ============================================
+   SMOOTH TRANSITIONS
+   ============================================ */
+
+.transition-all {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 200ms;
+}
+
+/* ============================================
+   SAFE AREA PADDING FOR NOTCHED PHONES
+   ============================================ */
+
+@supports (padding: max(0px)) {
+  .safe-area-bottom {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .safe-area-top {
+    padding-top: max(0.5rem, env(safe-area-inset-top));
+  }
+  
+  .pb-safe {
+    padding-bottom: max(1rem, env(safe-area-inset-bottom));
+  }
+  
+  .pt-safe {
+    padding-top: max(1rem, env(safe-area-inset-top));
+  }
+}
+
+/* ============================================
+   MOBILE NAVIGATION STYLES
+   ============================================ */
+
+.mobile-nav-open {
+  overflow: hidden;
+}
+
+/* ============================================
+   RESPONSIVE GRID HELPERS
+   ============================================ */
+
+@media (max-width: 639px) {
+  .grid-cols-1-xs {
+    grid-template-columns: 1fr;
+  }
+  
+  .grid-cols-2-xs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ============================================
+   MOBILE CARD STYLES
+   ============================================ */
+
+@media (max-width: 639px) {
+  .card-mobile {
+    width: 100%;
+    border-radius: 1rem;
+    margin: 0;
+  }
+}
+
+/* ============================================
+   MOBILE TEXT HELPERS
+   ============================================ */
+
+@media (max-width: 374px) {
+  .text-xs { font-size: 0.65rem; }
+  .text-sm { font-size: 0.75rem; }
+  .text-base { font-size: 0.875rem; }
+  .text-lg { font-size: 1rem; }
+  .text-xl { font-size: 1.125rem; }
+  .text-2xl { font-size: 1.25rem; }
+  .text-3xl { font-size: 1.5rem; }
+  .text-4xl { font-size: 1.75rem; }
+  .text-5xl { font-size: 2rem; }
+  .text-6xl { font-size: 2.25rem; }
+}
+
+@media (min-width: 375px) and (max-width: 413px) {
+  .text-xs { font-size: 0.7rem; }
+  .text-sm { font-size: 0.8rem; }
+  .text-base { font-size: 0.9rem; }
+  .text-lg { font-size: 1.05rem; }
+  .text-xl { font-size: 1.2rem; }
+  .text-2xl { font-size: 1.4rem; }
+  .text-3xl { font-size: 1.65rem; }
+  .text-4xl { font-size: 1.9rem; }
+}
+
+/* ============================================
+   MOBILE PADDING HELPERS
+   ============================================ */
+
+@media (max-width: 639px) {
+  .px-mobile {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .py-mobile {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+  
+  .gap-mobile {
+    gap: 0.75rem;
+  }
+}
+
+/* ============================================
+   BOTTOM NAVIGATION FIXED
+   ============================================ */
+
+@media (max-width: 767px) {
+  .bottom-nav-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+  }
+  
+  /* Add padding to content when bottom nav is present */
+  .has-bottom-nav {
+    padding-bottom: 5rem;
+  }
+}
+
+/* ============================================
+   MOBILE OVERLAY SCROLL LOCK
+   ============================================ */
+
+.overlay-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+/* ============================================
+   INPUT AUTOCOMPLETE BACKGROUND FIX
+   ============================================ */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+  -webkit-box-shadow: 0 0 0 30px #0d1117 inset !important;
+  -webkit-text-fill-color: white !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
